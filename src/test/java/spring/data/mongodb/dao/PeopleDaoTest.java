@@ -1,15 +1,16 @@
-package spring.data.mongodb.pojo.dao;
+package spring.data.mongodb.dao;
 
 import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Test;
 
+import spring.data.mongodb.dao.PeopleDao;
 import spring.data.mongodb.pojo.People;
 
-public class WarmaDaoTest {
+public class PeopleDaoTest {
 	
-	WarmaDao dao = new WarmaDao();
+	PeopleDao dao = new PeopleDao();
 	
 	@After
 	public void out(){

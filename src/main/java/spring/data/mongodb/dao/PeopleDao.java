@@ -1,4 +1,4 @@
-package spring.data.mongodb.pojo.dao;
+package spring.data.mongodb.dao;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import spring.data.mongodb.pojo.People;
 import com.yeezhao.commons.mongo.base.MongoTemplateFactory;
 import com.yeezhao.commons.mongo.cli.BaseMongoRepository;
 
-public class WarmaDao {
+public class PeopleDao {
 
 	private static final String dbUrl = "mongodb://localhost/db_solphire_warma";
 	private static final String COLLECTION_NAME = "t_people";
