@@ -8,6 +8,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.util.Bytes;
+
 import seasky.solphire.crawler.pojo.TaotaoData;
 
 import java.util.HashMap;
@@ -30,10 +31,11 @@ public class HbaseDao {
      * @return
      * @throws Exception
      */
-    @SuppressWarnings("unchecked")
-    public Map<String,String> scan() throws Exception{
+    @SuppressWarnings("deprecation")
+	public Map<String,String> scan() throws Exception{
         HashMap<String,String> map = new HashMap<String,String>();
-        HTable table = new HTable(conf, "t1");
+        @SuppressWarnings("resource")
+		HTable table = new HTable(conf, "t1");
         Scan scan = new Scan();
         for (Result result : table.getScanner(scan)) {
             for (KeyValue kv : result.raw()) {
@@ -49,7 +51,8 @@ public class HbaseDao {
      * @throws Exception
      */
     public void save2Hbase(TaotaoData data) throws Exception{
-        HTable table = new HTable(conf,"test");
+        @SuppressWarnings("resource")
+		HTable table = new HTable(conf,"test");
         Put put = new Put(Bytes.toBytes("baike|9209"));
         put.add("base_info".getBytes(),"area".getBytes(),data.getArea().getBytes());
         put.add("base_info".getBytes(),"onshow".getBytes(),data.getOnshow().getBytes());

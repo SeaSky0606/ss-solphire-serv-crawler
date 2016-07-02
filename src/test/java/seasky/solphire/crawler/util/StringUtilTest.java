@@ -38,7 +38,7 @@ public class StringUtilTest {
 
     @Test
     public void testHttpClient() throws Exception {
-        String url = "";
+//        String url = "";
 
 
     }
@@ -106,7 +106,6 @@ public class StringUtilTest {
 
     @Test
     public void testFastJson() throws Exception {
-        String json = "{'age':'18','sex':'男'}";
         String respond = "{\"ret\":0,\"state\":\"empty\",\"source\":\"百度百科\",\"category\":\"人物\"}";
         String source = JSONObject.parseObject(respond).getString("source");
         System.out.println(source);
@@ -129,7 +128,6 @@ public class StringUtilTest {
     @Test
     public void testHanLP() throws Exception {
         String s1 = " 基于此，一种新一开发模式诞生了！Kerkee框架是市面上独一无二的多主体共存的灵活混合型开发模型";
-        String s2;
         Set<String> set1 = new HashSet<String>();
         for (Term term : StandardTokenizer.segment(s1)) {
             System.out.println("word:" + term.word);

@@ -1,14 +1,14 @@
 package mongodb;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bson.Document;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 /**
  * mongodb 链接测试
@@ -18,14 +18,15 @@ public class MongoDBConn {
 
     public static void main(String[] args) throws Exception {
         System.out.println("--start--");
-        MongoClient mongoClient = new MongoClient("hadoop2", 27017);
+        @SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("hadoop2", 27017);
         MongoDatabase mongoDatabase = mongoClient.getDatabase("local");
         System.out.print(mongoDatabase.getName());
         System.out.println("  connected successfully!");
 
         System.out.println("验证/证明");
         for (MongoCredential credential : mongoClient.getCredentialsList()) {
-            System.out.println(credential.getUserName() + "|" + credential.getPassword());
+            System.out.println(credential.getUserName() + "|" + credential.getPassword().toString());
         }
         System.out.println("----mongo db数据库：-----");
         for (String s : mongoClient.listDatabaseNames()) {

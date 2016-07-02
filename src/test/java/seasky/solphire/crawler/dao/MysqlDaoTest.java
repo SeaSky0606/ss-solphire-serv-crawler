@@ -2,9 +2,8 @@ package seasky.solphire.crawler.dao;
 
 import org.junit.After;
 import org.junit.Test;
-import seasky.solphire.crawler.pojo.TaotaoData;
 
-import static org.junit.Assert.*;
+import seasky.solphire.crawler.pojo.TaotaoData;
 
 /**
  * Created by Administrator on 2016/3/27.

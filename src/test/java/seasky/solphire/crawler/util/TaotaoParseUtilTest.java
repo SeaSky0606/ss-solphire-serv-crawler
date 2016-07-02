@@ -1,11 +1,7 @@
 package seasky.solphire.crawler.util;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.junit.After;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Administrator on 2016/3/27.

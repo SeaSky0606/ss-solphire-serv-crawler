@@ -61,7 +61,8 @@ public class HtmlUtil {
         HttpURLConnection httpURL = (HttpURLConnection) url.openConnection();
         httpURL.connect();
         InputStream input = httpURL.getInputStream();
-        FileOutputStream output = new FileOutputStream(new File("G://p123.png"));
+        @SuppressWarnings("resource")
+		FileOutputStream output = new FileOutputStream(new File("G://p123.png"));
         byte[] b = new byte[1024];
         while (input.read(b) > 0) {
             output.write(b);
@@ -91,7 +92,8 @@ public class HtmlUtil {
         HttpURLConnection httpURL = (HttpURLConnection) url.openConnection();
         httpURL.connect();
         InputStream input = httpURL.getInputStream();
-        FileOutputStream output = new FileOutputStream(new File(dir + "" + newId + "." + type));
+        @SuppressWarnings("resource")
+		FileOutputStream output = new FileOutputStream(new File(dir + "" + newId + "." + type));
         byte[] b = new byte[1024];
         while (input.read(b) > 0) {
             output.write(b);
