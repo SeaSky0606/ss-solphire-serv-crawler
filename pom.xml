@@ -134,6 +134,23 @@
 			<artifactId>yz-commons-mongo</artifactId>
 			<version>0.1.1 </version>
 		</dependency>
+		
+		<!-- commons-util 开发中常见工具类操作 -->
+		<dependency>
+			<groupId>com.yeezhao.commons</groupId>
+			<artifactId>yz-commons-util</artifactId>
+			<version>0.2.20</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hadoop-core</artifactId>
+					<groupId>org.apache.hadoop</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hbase</artifactId>
+					<groupId>org.apache.hbase</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
