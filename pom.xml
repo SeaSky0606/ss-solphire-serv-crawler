@@ -158,6 +158,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
 		</dependency>
+		
+		<!-- 索引同步工具 -->
+		<dependency>
+			<groupId>com.yeezhao.dolphin</groupId>
+			<artifactId>yz-dolphin-commons-sealion</artifactId>
+			<version>0.2.32</version>
+		</dependency>
 
 	</dependencies>
 
