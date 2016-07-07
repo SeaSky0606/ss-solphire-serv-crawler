@@ -2,6 +2,7 @@ package apache.commons.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,12 +30,23 @@ public class FileIO {
 		return attrs;
 	}
 
+	//文件写入
+	@SuppressWarnings("deprecation")
+	public boolean writeFile() throws Exception {
+		String base = FileIO.class.getClassLoader().getResource("").getPath();
+		File file = new File(base + "readme.txt");
+		String data = "this is test.\nFine.";
+		FileUtils.writeStringToFile(file, data, true);
+		return true;
+	}
+
 	// 获取资源路径
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		FileIO fileIO = new FileIO();
-		System.out.println(System.getProperty("user.dir"));
-		String basePath = FileIO.class.getClassLoader().getResource("")
-				.getPath();
-		System.out.println(fileIO.getAttrs(basePath + "people.txt"));
+		// System.out.println(System.getProperty("user.dir"));
+		// String basePath = FileIO.class.getClassLoader().getResource("")
+		// .getPath();
+		// System.out.println(fileIO.getAttrs(basePath + "people.txt"));
+		fileIO.writeFile();
 	}
 }
