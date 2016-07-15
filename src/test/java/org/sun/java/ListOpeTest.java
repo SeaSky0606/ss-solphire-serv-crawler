@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
+
 /**
  * Array subList實踐
+ * 
  * @author Administrator
- * @since  2016年7月15日 上午8:40:19
+ * @since 2016年7月15日 上午8:40:19
  */
 public class ListOpeTest {
 
@@ -52,8 +54,8 @@ public class ListOpeTest {
 
 	@Test
 	public void testGetUsers() {
-		int pageNum = 3;
-		int pageSize = 5;
+		int pageNum = 7;
+		int pageSize = 3;
 		List<User> users = getUsers(pageNum, pageSize);
 		for (User s : users) {
 			System.out.println(s.name);
@@ -70,7 +72,12 @@ public class ListOpeTest {
 		List<User> userInit = userInit(18);
 		int fromIndex = (pageNum - 1) * pageSize;
 		int toIndex = fromIndex + pageSize;
-		return userInit.subList(fromIndex, toIndex);
+		// 超出判断
+		int size = userInit.size();
+		if (fromIndex >= size) {
+			return new ArrayList<>();
+		}
+		return userInit.subList(fromIndex, Math.min(size, toIndex));
 	}
 
 	public List<User> getSubUsers(int fromIndex, int toIndex) {
@@ -92,7 +99,6 @@ public class ListOpeTest {
 		public String toString() {
 			return "User [id=" + id + ", name=" + name + "]";
 		}
-		
-		
+
 	}
 }
