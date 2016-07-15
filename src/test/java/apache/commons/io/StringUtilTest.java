@@ -39,5 +39,11 @@ public class StringUtilTest {
 	public void testGetDelete() {
 		System.out.println(StringUtil.getDelete(str1));
 	}
+	
+	public static void main(String[] args) {
+		System.err.println(System.currentTimeMillis());
+		//20167814533956782
+		//    1467960788633
+	}
 
 }
