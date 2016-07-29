@@ -4,7 +4,7 @@
 
 	<groupId>seasky</groupId>
 	<artifactId>ss-solphire-serv-crawler</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ss-solphire-serv-crawler</name>
@@ -76,14 +76,16 @@
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
 			<version>0.98.0-hadoop2</version>
+			<!--
 			<exclusions>
 				<exclusion>
 					<artifactId></artifactId>
 				</exclusion>
 			</exclusions>
+			-->
 		</dependency>
 
-		<!-- 解决因hadoop依赖导致 ‘Missing jdk.tools’ -->
+		<!-- 解决因hadoop依赖导致 ‘Missing jdk.tools’
 		<dependency>
 			<groupId>jdk.tools</groupId>
 			<artifactId>jdk.tools</artifactId>
@@ -91,6 +93,7 @@
 			<scope>system</scope>
 			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 		</dependency>
+		 -->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-hdfs</artifactId>
