@@ -8,7 +8,8 @@ import java.net.URL;
 import java.util.logging.Logger;
 
 /**
- * Created by junhong on 2016/8/1.
+ * Created by junhong
+ * on 2016/8/1
  */
 public class JuheRestful {
     final static Logger LOG = Logger.getLogger(JuheRestful.class + "");
