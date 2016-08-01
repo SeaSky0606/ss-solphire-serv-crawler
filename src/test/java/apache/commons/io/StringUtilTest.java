@@ -25,6 +25,7 @@ public class StringUtilTest {
 
 	}
 
+
 	@Test
 	public void testGetReverse() {
 		System.out.println(StringUtil.getReverse(str2));

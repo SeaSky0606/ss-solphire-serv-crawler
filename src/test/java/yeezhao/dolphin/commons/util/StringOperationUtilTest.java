@@ -1,6 +1,10 @@
 package yeezhao.dolphin.commons.util;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringOperationUtilTest {
 	final static String test = "this is test";
@@ -44,6 +48,43 @@ public class StringOperationUtilTest {
 	public void testJudgeIsCh() {
 		String s = "hao123";
 		System.out.println(StringOperationUtil.judgeIsCh(s));
+	}
+
+	@Test
+	public void testMatcherString() throws Exception {
+
+		@SuppressWarnings("unused")
+		String str = "中华       人 民    共 和国   << hello Word >>";
+		str = "特写美图2(15张)2015年年初，Angelaba";
+		String reg = "[0-9a-zA-Z\u4E00-\u9FA5]+[(]\\d+张[)]";
+		str = str.replaceAll(reg, "");
+		System.out.println(str);
+
+	}
+	/*
+     * HTML Samples: <sup>[1]</sup> <sup>[2-6]</sup>
+     */
+	public String removeNumberIndex(String source) {
+		String regEx = "\\s*<sup>\\[.*?\\]</sup>&nbsp;\\s*";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(source);
+		String result = matcher.replaceAll("");
+		return result;
+	}
+
+
+	@Test
+	public void testRemoveNumberIndex() {
+		String source = "1234567890<sup>[1]</sup>&nbsp;1234567890<sup>[12-18]</sup>&nbsp;";
+		String result = removeNumberIndex(source);
+		System.out.println(result);
+	}
+
+	@Test
+	public void fliterChinese(){
+		String s = "Hi,中华人民共和国！";
+		String regex="[\\u4E00-\\u9FA5]";
+		System.out.println(s.replaceAll(regex,""));
 	}
 
 }

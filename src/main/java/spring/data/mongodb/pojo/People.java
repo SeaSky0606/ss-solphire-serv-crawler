@@ -15,6 +15,13 @@ public class People {
 		super();
 	}
 
+	public People(int id, String name, String sex, String birthDate) {
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.birthDate = birthDate;
+	}
+
 	public int getId() {
 		return id;
 	}
