@@ -1,10 +1,12 @@
 package restful.juhe;
 
 import com.yeezhao.commons.util.StringUtil;
+import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.logging.Logger;
 
 /**
@@ -25,13 +27,27 @@ public class JuheRestful {
             urlConnection.setRequestMethod(method);
         }
         urlConnection.connect();
+        LOG.info("request for:" + request);
         LOG.info("request method=" + urlConnection.getRequestMethod());
         InputStream inputStream = urlConnection.getInputStream();
-        StringBuffer sb = new StringBuffer("");
+        StringBuilder sb = new StringBuilder("");
         byte[] bytes = new byte[1024];
         while (inputStream.read(bytes) != -1) {
+            System.out.println(new String(bytes));
             sb.append(new String(bytes));
         }
         return sb.toString();
     }
+
+    public static byte[] fetchResultBytes(String request) throws Exception {
+        URL url = new URL(request);
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.connect();
+        InputStream inputStream = urlConnection.getInputStream();
+        LOG.info("inputStream=" + inputStream.toString());
+        return IOUtils.toByteArray(inputStream);
+
+    }
+
+
 }
