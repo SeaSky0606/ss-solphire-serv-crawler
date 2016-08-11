@@ -12,10 +12,6 @@ public class StringOperationUtilTest {
 	final static String complicated_passwd = "this is a complicated password, not simple as 18320144201.";
 	final static String[] arr = new String[] { "banana", "apple" };
 
-	@Test
-	public void testIsNullOrEmpty() {
-		System.out.println(StringOperationUtil.isNullOrEmpty("hey"));
-	}
 
 	@Test
 	public void testGenAppendString() {
@@ -85,6 +81,26 @@ public class StringOperationUtilTest {
 		String s = "Hi,中华人民共和国！";
 		String regex="[\\u4E00-\\u9FA5]";
 		System.out.println(s.replaceAll(regex,""));
+	}
+
+	@Test
+	public void testSpace() throws Exception {
+		String s = " ";
+		Assert.assertEquals(true, s.trim().isEmpty());
+	}
+
+	@Test
+	public void testIsNullOrEmpty() throws Exception {
+		String str1 = null;
+		String str2 = "";
+		String str3 = " ";
+		Assert.assertEquals(true, isNullOrEmpty(str1));
+		Assert.assertEquals(true, isNullOrEmpty(str2));
+		Assert.assertEquals(false, isNullOrEmpty(str3));
+	}
+
+	public boolean isNullOrEmpty(String s) {
+		return s == null || s.isEmpty();
 	}
 
 }
