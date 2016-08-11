@@ -84,16 +84,23 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>17.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-client</artifactId>
 			<version>0.98.0-hadoop2</version>
-			<!--
+
 			<exclusions>
+				<!-- exclude guava-12.0.1 -->
 				<exclusion>
-					<artifactId></artifactId>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
 				</exclusion>
 			</exclusions>
-			-->
+
 		</dependency>
 
 		<!-- 解决因hadoop依赖导致 ‘Missing jdk.tools’
@@ -162,6 +169,7 @@
 				<exclusion>
 					<artifactId>hbase</artifactId>
 					<groupId>org.apache.hbase</groupId>
+
 				</exclusion>
 			</exclusions>
 		</dependency>
