@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class YeezhaoRestful {
     private static final Logger LOG = Logger.getLogger("" + YeezhaoRestful.class);
-    private static final int DEFAULT_LENGTH = 1024;
+//    private static final int DEFAULT_LENGTH = 1024;
 
     /**
      * @param request

@@ -42,7 +42,6 @@ public class DateUtil {
 
 
 
-	@SuppressWarnings("unused")
 	private static void testDateCompare() {
 		String s1 = "20:00:01";
 		s1 = "00:01:16";

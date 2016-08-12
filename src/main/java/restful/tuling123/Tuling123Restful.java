@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class Tuling123Restful {
     final static Logger LOG = Logger.getLogger("" + Tuling123Restful.class);
-    private static final int DEFAULT_LENGTH = 1024;
+//    private static final int DEFAULT_LENGTH = 1024;
     //GET or POST
 
     //useProxy or not

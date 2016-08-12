@@ -49,7 +49,6 @@ public class StringOperationUtilTest {
 	@Test
 	public void testMatcherString() throws Exception {
 
-		@SuppressWarnings("unused")
 		String str = "中华       人 民    共 和国   << hello Word >>";
 		str = "特写美图2(15张)2015年年初，Angelaba";
 		String reg = "[0-9a-zA-Z\u4E00-\u9FA5]+[(]\\d+张[)]";
