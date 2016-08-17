@@ -17,6 +17,7 @@ public class HtmlUtilTest {
 	@Test
 	public void testGetHtmlByUrl() throws Exception{
 		String request = "http://www.baike.com/wiki/毛东东";
+		request = "http://so.gushiwen.org/view_71137.aspx";
 		String html = new HtmlUtil().getHtmlByUrl(request);
 		System.out.println(html);
 	}

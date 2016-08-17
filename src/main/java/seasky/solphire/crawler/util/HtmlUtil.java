@@ -1,10 +1,12 @@
 package seasky.solphire.crawler.util;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class HtmlUtil {
     final static Logger LOG = Logger.getLogger(HtmlUtil.class);
@@ -99,6 +101,22 @@ public class HtmlUtil {
             output.write(b);
         }
         return true;
+    }
+    /**
+     * commmons.io 字节工具获取http返回字节
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    public static byte[] fetchResult(String request) throws Exception{
+    	URL url  =new URL(request);
+    	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    	conn.connect();
+    	if(conn.getResponseCode()!=200){
+    		LOG.info("====== connect error! ===========");
+    	}
+    	InputStream input = conn.getInputStream();
+    	return IOUtils.toByteArray(input);
     }
 
 
