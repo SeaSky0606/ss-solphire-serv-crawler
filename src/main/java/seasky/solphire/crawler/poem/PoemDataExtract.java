@@ -25,14 +25,14 @@ public class PoemDataExtract {
 	private final static Logger LOG = Logger.getLogger(PoemDataExtract.class);
 	public final static String GUSHIWEN_REQUEST_FORMAT = "http://so.gushiwen.org/view_%s.aspx"; // 7722
 	private static final int FINAL_SIZE = 74000;
-	private static final int START_INDEX = 7000;
+	private static final int START_INDEX = 19000;
 	private static final int CUR_SIZE = 1000;
 	private static final double SLEEP_STEP = 1000;
 
-	public void start() {
+	public void start(int begin) {
 		long start = System.currentTimeMillis();
 		int cnt = 0;
-		for (int index = START_INDEX; index < FINAL_SIZE; index++) {
+		for (int index = begin; index < FINAL_SIZE; index++) {
 			if (analyze("" + index)) {
 				cnt++;
 				if (cnt > CUR_SIZE)
@@ -77,7 +77,7 @@ public class PoemDataExtract {
 		for (Element e : tagsEle) {
 			tagList.add(e.text());
 		}
-		tags = join(tagList,"#");
+		tags = join(tagList, "#");
 		String title = doc.select(".shileft .son1 h1").text();
 		Elements es = doc.select(".shileft .son2 p");
 		int size = es.size();
@@ -102,7 +102,7 @@ public class PoemDataExtract {
 		// System.out.println("con=" + content);
 		for (Element e : es.remove()) {
 			String paragraph = e.text();
-//			System.out.println(paragraph);
+			// System.out.println(paragraph);
 		}
 
 		if (StringUtil.isNullOrEmpty(content)) {
@@ -124,7 +124,7 @@ public class PoemDataExtract {
 	 * @return list拼接成 String by 'Character'
 	 */
 	public String join(List<String> list, String separator) {
-		if (separator == null || list == null || list.size()==0) {
+		if (separator == null || list == null || list.size() == 0) {
 			return "";
 		}
 		StringBuffer sb = new StringBuffer("");
@@ -147,7 +147,7 @@ public class PoemDataExtract {
 		BaseMongoRepository repo = new BaseMongoRepository(MongoTemplateFactory.getMongoTemplate(dbUrl));
 		Query query = new Query();
 		query.addCriteria(Criteria.where("_id").is(data.get("_id")));
-		if(repo.doExist(query, collectionName)){
+		if (repo.doExist(query, collectionName)) {
 			return false;
 		}
 		repo.insert(data, collectionName);
@@ -160,7 +160,12 @@ public class PoemDataExtract {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new PoemDataExtract().start();
+		int begin = START_INDEX;
+		if (args.length > 0) {
+			LOG.info("args=" + args[0]);
+			begin = Integer.parseInt(args[0]);
+		}
+		new PoemDataExtract().start(begin);
 	}
 
 }
