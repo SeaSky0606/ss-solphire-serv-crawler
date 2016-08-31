@@ -78,6 +78,10 @@ public class HBaseOperation<T> implements DBBaseOperation<T> {
 		}
 		return false;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(new HBaseOperation<>().conn());
+	}
 
 	public void scan() {
 		Scan scan = new Scan();
