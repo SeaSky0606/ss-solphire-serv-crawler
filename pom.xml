@@ -113,15 +113,9 @@
 
 		</dependency>
 
-		<!-- 解决因hadoop依赖导致 ‘Missing jdk.tools’
-		<dependency>
-			<groupId>jdk.tools</groupId>
-			<artifactId>jdk.tools</artifactId>
-			<version>1.7</version>
-			<scope>system</scope>
-			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
-		</dependency>
-		 -->
+		<!-- 解决因hadoop依赖导致 ‘Missing jdk.tools’ <dependency> <groupId>jdk.tools</groupId> 
+			<artifactId>jdk.tools</artifactId> <version>1.7</version> <scope>system</scope> 
+			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath> </dependency> -->
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-hdfs</artifactId>
@@ -241,6 +235,32 @@
 					<target>1.7</target>
 					<encoding>utf-8</encoding>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<!--把可执行文件拷到和jar包同一个路径下 -->
+					<execution>
+						<id>copy-shell</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<outputDirectory>${project.build.directory}/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/bin/</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
